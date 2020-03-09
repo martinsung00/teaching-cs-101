@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /*
   @author Gordon Zhang (GitHub: zwilhelmm)
@@ -23,7 +23,7 @@
 
 const getKeyCount = function(myObj) {
   //
-}
+};
 
 /*
   (MEDIUM)
@@ -33,9 +33,27 @@ const getKeyCount = function(myObj) {
 
 const cylinder = {};
 
-const getCylinderVolume = function (cylinder) {
+const getCylinderVolume = function(cylinder) {
   //
-}
+};
+
+/*
+  (MEDIUM)
+
+  You have three minutes for this problem! Make sure you time yourself accurately, and read over the problem before you begin.
+
+  In three minutes, you need to make the code at the bottom work!
+*/
+
+const test = [{ a: 1, b: [{ a: 0, b: 2 }, { a: ["kings"] }]}, { a: 0, b: { 0: [1, 0]}}, true, [{ a: true, 1: [1, 0, { a: "angels" }]}, { b: 0, a: { 1: [{ a: true }]}}], { a: 1, b: [{ a: 0, b: "lions" }, { a: [0] }]}, { a: 0, b: { 0: [1, "unicorns"]}}, true, [{ a: true, 1: [1, 0, { a: "demons" }]}, { b: 0, a: { 1: [{ a: true }]}}]];
+
+const kings; // What is the path to access this variable?
+const lions;
+const unicorns;
+const angels;
+const demon;
+
+console.log('We found them all! -', kings, lions, unicorns, angels, demons); // Will print "undefined undefined undefined ..." unless you update the variables above properly!
 
 /*
   (UNFINISHED)
