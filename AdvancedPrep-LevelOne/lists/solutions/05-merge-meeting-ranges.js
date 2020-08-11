@@ -21,4 +21,29 @@
   
   Output: [{0, 1}, {3, 8}, {9, 12}]
 */
-export function mergeMeetingRanges(meetings) {}
+
+/*
+  Time: O(n log n)
+  Space: O(n)
+
+  Note: if input array were already sorted, then the sort action can be skipped, which then speeds the algorithm's runtime up to O(n).
+*/
+export function mergeMeetingRanges(meetings) {
+  const sortedMeetings = meetings.sort((a, b) => a.start - b.start);
+
+  const mergedMeetings = [sortedMeetings[0]];
+
+  for (let i = 1; i < sortedMeetings.length; i++) {
+    const currentMeeting = sortedMeetings[i];
+    const lastMergedMeeting = mergedMeetings[mergedMeetings.length - 1];
+
+    if (currentMeeting.start <= lastMergedMeeting.end)
+      lastMergedMeeting.end = Math.max(
+        lastMergedMeeting.end,
+        currentMeeting.end
+      );
+    else mergedMeetings.push(currentMeeting);
+  }
+
+  return mergedMeetings;
+}
