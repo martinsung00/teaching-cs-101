@@ -10,4 +10,4 @@
   Output: false
 */
 
-export function hasOnlyUniqueCharacters(str) {}
+export function hasOnlyUniqueChars(str) {}

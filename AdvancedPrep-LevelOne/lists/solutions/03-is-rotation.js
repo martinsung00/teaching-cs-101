@@ -14,7 +14,17 @@
   Time: O(m * n)
   Space: O(n)
 
-  More succintly: return (str1.includes(str2)) ? true : false;
+  Using native library functions.
+
+  Note: if the search string has no unique characters, then we can check the first letter, which then speeds the algorithm's runtime up to O(n).
+*/
+export function isRotation1(str1, str2) {
+  return str1.concat(str1).includes(str2) ? true : false;
+}
+
+/*
+  Time: O(m * n)
+  Space: O(n)
 
   Note: if the search string has no unique characters, then we can check the first letter, which then speeds the algorithm's runtime up to O(n).
 */
