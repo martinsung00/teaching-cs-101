@@ -56,36 +56,81 @@ export default class LinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
+    this.size = 0;
+    this.table = {};
   }
 
   appendToHead(data) {
     const newNode = new Node(data);
 
-    if (this.head === null) this.tail = newNode;
-
     newNode.next = this.head;
+    newNode.prev = null;
+
     this.head = newNode;
+
+    this.__updateAppend();
   }
 
   removeFromHead() {
     this.head = this.head.next;
 
-    if (this.head === null) this.tail = null;
+    this.__updateRemove();
   }
 
   appendToTail(data) {
     const newNode = new Node(data);
-
-    if (this.head === null) this.head = newNode;
+    newNode.next = null;
+    newNode.prev = this.tail;
 
     this.tail.next = newNode;
+
+    this.__updateAppend();
   }
 
-  removeFromTail(data) {
-    //
+  removeFromTail() {
+    this.tail = this.tail.prev;
+
+    this.__updateRemove();
   }
 
-  deleteNode(val) {
-    // Removes the first occurence of data.
+  deleteNode(data) {
+    let currentNode = this.head;
+
+    while (currentNode !== null) {
+      if (currentNode.data === data) {
+        currentNode.prev.next = currentNode.next;
+
+        this.__updateRemove();
+        break;
+      }
+    }
+  }
+
+  secondToLast() {
+    return this.size === 0 || this.size === 1 ? null : this.tail.prev.data;
+  }
+
+  size() {
+    return this.size;
+  }
+
+  has(data) {
+    return this.table[data] ? true : false;
+  }
+
+  __updateAppend() {
+    this.size++;
+
+    this.table[data]
+      ? (this.table[data] = this.table[data] + 1)
+      : (this.table[data] = 1);
+  }
+
+  __updateRemove() {
+    this.size--;
+
+    this.table[data]
+      ? (this.table[data] = this.table[data] - 1)
+      : delete this.table[data];
   }
 }

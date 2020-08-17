@@ -18,7 +18,7 @@ export function hasPalindromePermutation(str) {
   const chars = new Set();
 
   for (let i = 0; i < str.length; i++) {
-    if (chars.has(str[i])) chars.delete(chars[i]);
+    if (chars.has(str[i])) chars.delete(str[i]);
     else chars.add(str[i]);
   }
 
