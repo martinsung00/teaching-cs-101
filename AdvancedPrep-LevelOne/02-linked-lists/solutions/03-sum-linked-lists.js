@@ -11,26 +11,26 @@
   Follow-up:
   - Suppose the digits were stored in _forward_ order. α.
 */
-export function removeDuplicates(l1, l2) {
-  let l1Node = l1;
-  let l2Node = l2;
+export function sum(l1, l2) {
+  const result = new Node();
+
+  let tail = result;
   let carry = 0;
-  let result = null;
 
-  while (l1 !== null && l2 !== null) {
-    const sum =
-      carry + (l1Node !== null ? l1Node.data : 0) + (l2Node !== null)
-        ? l2Node.data
-        : 0;
+  while (l1 || l2 || carry) {
+    const d1 = l1 ? l1.data : 0;
+    const d2 = l2 ? l2.data : 0;
 
-    carry = sum >= 10 ? 1 : 0;
-    sum %= 10;
+    const d = d1 + d2 + carry;
 
-    const newNode = new Node();
-    newNode.data = sum;
+    tail.next = new Node(d % 10);
+    tail = tail.next;
 
-    //
+    carry = d >= 10 ? 1 : 0;
+
+    l1 = l1 && l1.next;
+    l2 = l2 && l2.next;
   }
 
-  return result;
+  return result.next;
 }

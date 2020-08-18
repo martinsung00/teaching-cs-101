@@ -118,7 +118,7 @@ export default class LinkedList {
     return this.table[data] ? true : false;
   }
 
-  __updateAppend() {
+  __updateAppend(data) {
     this.size++;
 
     this.table[data]
@@ -126,10 +126,10 @@ export default class LinkedList {
       : (this.table[data] = 1);
   }
 
-  __updateRemove() {
+  __updateRemove(data) {
     this.size--;
 
-    this.table[data]
+    this.table[data] && this.table[data] !== 1
       ? (this.table[data] = this.table[data] - 1)
       : delete this.table[data];
   }

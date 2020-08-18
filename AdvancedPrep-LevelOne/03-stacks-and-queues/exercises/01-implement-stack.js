@@ -6,7 +6,7 @@
   A Node class has been provided for your convenience.
 
   1. Implement a stack using linked lists, and all of its operations.
-  2. Add function min() that returns the minimum element in the stack. You can assume all data inserted will be numbers. You must preserve the advantages of using stacks: push(), pop(), and min() must all operate in constant time.
+  2. Optimize all functions to O(1) time.
 */
 
 class Node {

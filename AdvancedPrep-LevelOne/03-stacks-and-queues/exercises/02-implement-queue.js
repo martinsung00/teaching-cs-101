@@ -6,6 +6,7 @@
   A Node class has been provided for your convenience.
 
   1. Implement a queue using linked lists, and all of its operations.
+  2. Optimize all functions to O(1) time.
 */
 
 class Node {

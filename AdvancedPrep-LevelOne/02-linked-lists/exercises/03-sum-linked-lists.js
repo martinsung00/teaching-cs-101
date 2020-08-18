@@ -10,4 +10,4 @@
 
   Note: a common follow-up is to re-implement the algorithm supposing that the digits were stored in _forward_ order.
 */
-export function removeDuplicates(l1, l2) {}
+export function sum(l1, l2) {}

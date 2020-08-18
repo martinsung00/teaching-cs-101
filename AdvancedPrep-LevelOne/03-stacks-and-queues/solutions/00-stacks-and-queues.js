@@ -28,4 +28,6 @@
   Unlike lists, stacks and queues do not offer constant time random access, although, unlike lists, they do offer constant time insertion and removal. This is a classic case of taking specific trade-offs to do something else better.
 
   Stacks can also be used in recursive algorithms, as you can push temporary data onto a stack as your recurse, but then remove them as you backtrack. As such, recursive algorithms can be implemented iteratively with stacks. You should try this on your own time as a test of understanding.
+
+  Because the implementation of stacks and queues itself is somewhat more trivial compared to implementing linked lists, there will be an additional exercise for this chapter.
 */

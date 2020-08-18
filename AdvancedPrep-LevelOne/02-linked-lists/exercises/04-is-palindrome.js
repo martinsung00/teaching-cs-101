@@ -11,4 +11,4 @@
 
   α.
 */
-export function removeDuplicates(l1, l2) {}
+export function isPalindrome(head) {}

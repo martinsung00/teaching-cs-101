@@ -7,9 +7,11 @@
 
   A circular linked list is a linked list where any of its given nodes points to an earlier node, making a loop. You can think of it as a corrupted linked list.
 
+  Return the node where the cycle begins.
+
   Input: A -> B -> C -> D -> E -> C (the same C as earlier)
   Output: C
 
   α.
 */
-export function removeDuplicates(head) {}
+export function findLoop(head) {}

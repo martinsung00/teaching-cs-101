@@ -6,6 +6,7 @@
   A Node class has been provided for your convenience.
 
   1. Implement a queue using linked lists, and all of its operations.
+  2. Optimize all functions to O(1) time.
 */
 
 class Node {
@@ -16,10 +17,35 @@ class Node {
 }
 
 export default class Queue {
-  constructor() {}
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
+  }
 
-  enqueue();
-  dequeue();
-  peek();
-  isEmpty();
+  enqueue(data) {
+    const newNode = new Node(data);
+    newNode.next = null;
+
+    this.tail === null ? (this.head = newNode) : (this.tail.next = newNode);
+    this.tail = newNode;
+    this.size++;
+  }
+
+  dequeue() {
+    if (this.head === null) return null;
+
+    const data = this.head.data;
+    this.head = this.head.next;
+    this.size--;
+    return data;
+  }
+
+  peek() {
+    return this.head.data;
+  }
+
+  isEmpty() {
+    return this.size > 0 ? false : true;
+  }
 }

@@ -6,7 +6,7 @@
   A Node class has been provided for your convenience.
 
   1. Implement a stack using linked lists, and all of its operations.
-  2. Add function min() that returns the minimum element in the stack. You can assume all data inserted will be numbers. You must preserve the advantages of using stacks: push(), pop(), and min() must all operate in constant time.
+  2. Optimize all functions to O(1) time.
 */
 
 class Node {
@@ -17,10 +17,31 @@ class Node {
 }
 
 export default class Stack {
-  constructor() {}
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
 
-  push();
-  pop();
-  peek();
-  isEmpty();
+  push(data) {
+    const newNode = new Node(data);
+    newNode.next = this.head;
+    this.head = newNode;
+    this.size++;
+  }
+
+  pop() {
+    if (this.head === null) return null;
+    const data = this.head.data;
+    this.head = this.head.next;
+    this.size--;
+    return data;
+  }
+
+  peek() {
+    return this.head.data;
+  }
+
+  isEmpty() {
+    return this.size > 0 ? false : true;
+  }
 }

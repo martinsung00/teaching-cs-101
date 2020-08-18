@@ -24,7 +24,10 @@ export function removeDuplicates(head) {
 }
 
 /*
-  If the input is sorted, then we perform this task in O(n, 1).
+  Time: O(n)
+  Space: O(1)
+
+  This assumes the input is sorted.
 */
 export function removeDuplicates1(head) {
   if (head.next === null) return;
