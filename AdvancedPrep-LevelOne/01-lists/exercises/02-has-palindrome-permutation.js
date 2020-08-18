@@ -10,4 +10,21 @@
   Output: false
 */
 
-export function hasPalindromePermutation(str) {}
+export function hasPalindromePermutation(str) {
+  /*
+  If string is of even length, every character should be paired, storage should be empty
+  If string is of odd length there should be only one unique character
+  */
+  const storage = new Set();
+
+  for (let i = 0; i < str.length; i++) {
+    let currentLetter = str[i];
+
+    if (storage.has(currentLetter)) {
+      storage.delete(currentLetter);
+    } else {
+      storage.add(currentLetter);
+    }
+  }
+  return (storage.size === 1 || storage.size === 0) ? true : false;
+};
