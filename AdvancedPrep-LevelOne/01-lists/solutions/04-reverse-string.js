@@ -18,10 +18,10 @@
   Space: O(1)
 */
 export function reverseString(str) {
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length / 2; i++) {
     const temp = str[i];
-    str[i] = str[str.length - 1];
-    str[str.length - 1] = temp;
+    str[i] = str[str.length - i - 1];
+    str[str.length - i - 1] = temp;
   }
 
   return str;

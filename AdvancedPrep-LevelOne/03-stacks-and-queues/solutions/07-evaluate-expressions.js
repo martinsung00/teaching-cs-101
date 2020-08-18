@@ -21,6 +21,9 @@
   α.
 */
 
+import Stack from "./01-implement-stack";
+
 export function evaluate(str) {
-  //
+  const operators = new Stack();
+  const values = new Stack();
 }
