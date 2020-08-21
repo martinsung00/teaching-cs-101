@@ -14,4 +14,25 @@
 
   α.
 */
-export function findLoop(head) {}
+export function findLoop(head) {
+  // Traverse linked list, compare current node to next node until node matches.
+  let startNode = head;
+  let currentNode = head;
+  let nextNode = head.next;
+
+  if (currentNode === nextNode) {
+    return nextNode;
+  }
+  while(nextNode !== null) {
+    currentNode = currentNode.next;
+    nextNode = nextNode.next.next;
+
+    if (currentNode === nextNode) {
+      while(startNode !== currentNode) {
+        startNode = startNode.next;
+        currentNode = currentNode.next;
+      }
+      return startNode;
+    }
+  }
+};
