@@ -62,7 +62,7 @@ export default class LinkedList {
       this.head = newNode;
       this.tail = newNode;
     } else {
-      newNode.next = currentHead;
+      newNode.next = this.head;
       this.head.prev = newNode;
       this.head = newNode;
     }
@@ -72,17 +72,15 @@ export default class LinkedList {
   appendToTail(data) {
     // Appends a node containing data to the end. Constant time.
     const newNode = new Node(data);
-    let currentTail = this.tail;
     newNode.next = null;
-    newNode.prev = currentTail;
+    newNode.prev = this.tail;
 
     if (this.head === null) {
       this.head = newNode;
-      currentTail = newNode;
+      this.tail = newNode;
       newNode.prev = null;
     } else {
-      currentTail.next = newNode;
-      currentTail = newNode;
+      this.tail = newNode;
     }
     this.increase();
   };
@@ -93,7 +91,7 @@ export default class LinkedList {
       this.head = this.head.next;
       this.decrease();
     } else {
-      throw ('List is empty');
+      return ('List is empty');
     }
   };
 
@@ -113,6 +111,8 @@ export default class LinkedList {
     let currentNode = this.head;
 
     while (currentNode.next !== null) {
+      currentNode = currentNode.next;
+
       if (currentNode.data === data) {
         currentNode.prev.next = currentNode.next;
         this.decrease();
@@ -133,7 +133,7 @@ export default class LinkedList {
     return (listStorage[data]) ? true : false;
   };
 
-  tail() {
+  fetchTail() {
     // Returns the tail data. Constant time.
     return this.tail.data;
   };
