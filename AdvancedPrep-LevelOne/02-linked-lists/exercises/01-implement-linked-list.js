@@ -55,16 +55,16 @@ export default class LinkedList {
   appendToHead(data) {
     // Appends a node contaiing data to the front. Constant time.
     const newNode = new Node(data);
-    let currentHead = this.head;
     newNode.next = null;
     newNode.prev = null;
 
-    if (currentHead === null) {
-      currentHead = newNode;
+    if (this.head === null) {
+      this.head = newNode;
       this.tail = newNode;
     } else {
       newNode.next = currentHead;
-      currentHead.prev = newNode;
+      this.head.prev = newNode;
+      this.head = newNode;
     }
     this.increase();
   };
@@ -89,14 +89,22 @@ export default class LinkedList {
 
   removeFromHead() {
     // Removes node from head. Constant time.
-    this.head = this.head.next;
-    this.decrease();
+    if (this.head !== null) {
+      this.head = this.head.next;
+      this.decrease();
+    } else {
+      throw ('List is empty');
+    }
   };
 
   removeFromTail() {
     // Removes node from tail. Constant time.
-    this.tail = this.tail.prev;
-    this.decrease();
+    if (this.head !== null && this.tail !== null) {
+      this.tail = this.tail.prev;
+      this.decrease();
+    } else {
+      throw ('List is empty')
+    }
   };
 
   deleteNode(data) {
@@ -149,7 +157,7 @@ export default class LinkedList {
     // Used as a helper function when deleting nodes.
     const listStorage = this.storage;
 
-    (listStorage[data] > 1) ? listStorage[data]-- : delete listStorage[data];
+    (listStorage[data] && listStorage[data] !== 1) ? listStorage[data] - 1 : delete listStorage[data];
     return this.size--;
   };
 };
