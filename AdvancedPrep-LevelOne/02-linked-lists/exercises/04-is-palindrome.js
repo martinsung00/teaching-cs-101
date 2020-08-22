@@ -11,4 +11,39 @@
 
   α.
 */
-export function isPalindrome(head) {}
+export function isPalindrome(head) {
+  // Move pointer two to the end of the linked list.
+  // Move pointer one with pointer two so that it ends halfway when pointer one reaches the end of the linked list.
+  let pointerOne = head;
+  let pointerTwo = head;
+
+  while(pointer !== null && pointer.next !== null) {
+    pointerOne = pointerOne.next;
+    pointerTwo = pointerTwo.next.next;
+  }
+
+  // Reset pointer one back to head.
+  pointerTwo = head;
+  pointerOne = reverse(pointerOne);
+
+  while (pointerOne !== null) {
+    if (pointerOne.val !== pointerTwo.val) {
+      return false;
+    }
+    pointerOne = pointerOne.next;
+    pointerTwo = pointerTwo.next;
+  }
+  return true;
+};
+
+const reverse = function(head) {
+  let prevNode = null;
+
+  while(head !== null) {
+    let nextNode = head.next;
+    head.next = prevNode;
+    prevNode = head;
+    head = nextNode;
+  }
+  return prevNode;
+};
