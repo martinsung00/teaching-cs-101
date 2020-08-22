@@ -91,7 +91,7 @@ export default class LinkedList {
       this.head = this.head.next;
       this.decrease();
     } else {
-      return ('List is empty');
+      return null;
     }
   };
 
@@ -101,7 +101,7 @@ export default class LinkedList {
       this.tail = this.tail.prev;
       this.decrease();
     } else {
-      throw ('List is empty')
+      return null;
     }
   };
 
