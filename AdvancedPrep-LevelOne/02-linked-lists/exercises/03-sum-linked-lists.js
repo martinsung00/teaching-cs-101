@@ -77,4 +77,4 @@ function reverseSum(l1, l2) {
       l2 = l2.next;
     }
   }
-}
+};
