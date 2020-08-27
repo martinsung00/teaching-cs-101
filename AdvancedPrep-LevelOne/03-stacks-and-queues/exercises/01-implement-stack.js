@@ -16,6 +16,38 @@ class Node {
   }
 }
 
-export default class Stack {
-  constructor() {}
-}
+class Stack {
+  constructor() {
+    this.head = null;
+    this.storage = 0;
+  }
+
+  push(data) {
+    const newNode = new Node(data);
+    newNode.next = this.head;
+    this.head = newNode;
+    this.storage += 1;
+  }
+
+  pop() {
+    if (this.head === null) return null;
+    const datum = this.head.data;
+    this.head = this.head.next;
+    this.storage -= 1;
+    return datum;
+  }
+
+  peek() {
+    return this.head.data;
+  }
+
+  isEmpty() {
+    return this.storage === 0 ? true : false;
+  }
+
+  size() {
+    return this.storage;
+  }
+};
+
+module.exports = Stack;
