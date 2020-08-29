@@ -14,16 +14,18 @@ export default class Stack {
   }
 
   push(data) {
-    const rotation = this.queue.size();
+    const rotations = this.queue.size();
 
     this.queue.enqueue(data);
     while (rotations > 0) {
       this.queue.enqueue(this.queue.dequeue());
       rotations--;
     }
+    this.size++;
   }
 
   pop() {
+    this.size--;
     return this.queue.isEmpty ? null : this.queue.dequeue();
   }
 
