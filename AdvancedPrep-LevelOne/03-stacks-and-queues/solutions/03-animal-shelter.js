@@ -66,4 +66,15 @@ export class AnimalShelter1 {
 
     return null;
   }
+
+  dequeueCat() {
+    while (this.queue.peek() !== null) {
+      const animal = this.queue.peek();
+      animal === "dog"
+        ? this.queue.enqueue(this.queue.dequeue())
+        : this.dequeue();
+    }
+
+    return null;
+  }
 }
