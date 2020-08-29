@@ -1,2 +1,4 @@
+# Dependencies, metadata, and other paraphernalia. 
 node_modules
 .DS_Store
+.vscode
