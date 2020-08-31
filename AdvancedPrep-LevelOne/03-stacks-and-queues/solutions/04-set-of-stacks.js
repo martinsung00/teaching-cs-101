@@ -21,7 +21,6 @@ export default class SetOfStacks {
     if (this.stacks[this.stacks.length - 1].length >= threshold) {
       const newStack = new Stack();
       newStack.push(data);
-
       this.stacks.push(newStack);
     } else {
       this.stacks[this.stacks.length - 1].push(data);
