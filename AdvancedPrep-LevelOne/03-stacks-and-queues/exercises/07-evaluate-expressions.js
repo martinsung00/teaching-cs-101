@@ -37,11 +37,7 @@ export function evaluate(str) {
   }
 
   while(!stack.isEmpty()) {
-    let a = stack.pop();
-    let b = stack.pop();
-    let c = stack.pop();
 
-    solution = abc;
   }
 
 }

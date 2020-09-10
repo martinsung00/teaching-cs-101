@@ -6,4 +6,8 @@
   α.
 */
 
-export function mergeSort(list) {}
+export function mergeSort(list) {
+  while (list.length !== 1) {
+
+  }
+}

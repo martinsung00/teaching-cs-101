@@ -55,67 +55,59 @@ export default class LinkedList {
   appendToHead(data) {
     // Appends a node contaiing data to the front. Constant time.
     const newNode = new Node(data);
-    newNode.next = null;
-    newNode.prev = null;
 
+    newNode.next = this.head;
     if (this.head === null) {
-      this.head = newNode;
       this.tail = newNode;
     } else {
-      newNode.next = this.head;
       this.head.prev = newNode;
-      this.head = newNode;
+      this.tail = this.head;
     }
-    this.increase();
+
+    this.head = newNode;
+    this.increase(data);
   };
 
   appendToTail(data) {
     // Appends a node containing data to the end. Constant time.
     const newNode = new Node(data);
-    newNode.next = null;
-    newNode.prev = this.tail;
 
     if (this.head === null) {
       this.head = newNode;
-      this.tail = newNode;
-      newNode.prev = null;
     } else {
-      this.tail = newNode;
+      this.tail.next = newNode;
+      newNode.prev = this.tail;
     }
-    this.increase();
+    this.tail = newNode;
+    this.increase(data);
   };
 
   removeFromHead() {
     // Removes node from head. Constant time.
-    if (this.head !== null) {
-      this.head = this.head.next;
-      this.decrease();
-    } else {
-      return null;
-    }
+    if (this.head === null) return null;
+
+    this.decrease(this.head.data);
+    this.head.prev = null;
+    this.head = this.head.next;
+
   };
 
   removeFromTail() {
     // Removes node from tail. Constant time.
-    if (this.head !== null && this.tail !== null) {
-      this.tail = this.tail.prev;
-      this.decrease();
-    } else {
-      return null;
-    }
+    if (this.head === null) return null;
+
+    this.tail = this.tail.prev;
   };
 
   deleteNode(data) {
     // Removes the first occurence of data. Linear time.
     // Unlike removing form head or tail, this method must search the entire linked list for the data.
-    let currentNode = this.head;
+    while (this.head.next !== null) {
+      this.head = this.head.next
 
-    while (currentNode.next !== null) {
-      currentNode = currentNode.next;
+      if (this.head.data === data) {
+        this.head.prev.next = this.head.next;
 
-      if (currentNode.data === data) {
-        currentNode.prev.next = currentNode.next;
-        this.decrease();
         break;
       }
     }
@@ -140,24 +132,22 @@ export default class LinkedList {
 
   secondToLast() {
     // Returns second to last item of linked list. Constant time.
-    const prevTail = this.tail.prev;
-
-    return (this.size !== 0 || this.size !== 1) ? prevTail.data : null;
+    return this.tail.prev;
   };
 
-  increase() {
+  increase(data) {
     // Used as a helper function when adding new nodes.
     const listStorage = this.storage;
 
-    (!listStorage[data]) ? listStorage[data] = 1 : listStorage[data]++;
+    (!listStorage[data]) ? listStorage[data] = 1 : listStorage[data] += 1;
     return this.size++;
   };
 
-  decrease() {
+  decrease(data) {
     // Used as a helper function when deleting nodes.
     const listStorage = this.storage;
 
-    (listStorage[data] && listStorage[data] !== 1) ? listStorage[data] - 1 : delete listStorage[data];
+    (listStorage[data] && listStorage[data] !== 1) ? listStorage[data] -= 1 : delete listStorage[data];
     return this.size--;
   };
 };

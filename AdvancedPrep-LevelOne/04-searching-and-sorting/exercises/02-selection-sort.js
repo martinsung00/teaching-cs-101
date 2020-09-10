@@ -21,4 +21,5 @@ export function selectionSort(list) {
   return list;
 };
 
-//Runtime O(log(n))
+//Runtime: O(log(n))
+//Space: O(1)

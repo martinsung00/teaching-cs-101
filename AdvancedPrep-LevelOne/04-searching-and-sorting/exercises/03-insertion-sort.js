@@ -17,3 +17,6 @@ export function insertionSort(list) {
   }
   return list;
 };
+
+//Runtime: O(n^m)
+//Space: O(1)

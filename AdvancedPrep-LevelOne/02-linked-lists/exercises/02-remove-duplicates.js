@@ -4,18 +4,15 @@
   Implement an algorithm that removes duplicate values in a linked list using only O(1) space.
 */
 export function removeDuplicates(head) {
-  let currentNode = head;
-  let nextNode = head.next;
+  const current = this.head;
+  const next = this.head.next;
 
-  if (nextNode === null) {
-    return "Only one item exits in the data structure";
-  }
-  while (nextNode !== null) {
-    if (currentNode.data === nextNode.data) {
-      nextNode = nextNode.next;
-      break;
+  while (next !== null) {
+    while (next.data === current.data) {
+      next.next.prev = current;
+      next = next.next;
     }
-    currentNode = nextNode;
-    nextNode = nextNode.next;
+    current = next;
+    next = next.next;
   }
 };

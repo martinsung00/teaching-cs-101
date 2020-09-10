@@ -16,16 +16,15 @@ export function hasOnlyUniqueCharacters(str) {
   If the letter is in the storage already and the letter appears again,
   the string is not composed of only unique characters
   */
-  const uniqueChar = new Set();
+  const set = new Set();
 
   for (let i = 0; i < str.length; i++) {
-    let currentLetter = str[i].toString();
-
-    if (uniqueChar.has(currentLetter)) {
+    if (set.has(str[i])) {
       return false;
     } else {
-      uniqueChar.add(currentLetter);
+      set.add(str[i]);
     }
   }
+
   return true;
 };

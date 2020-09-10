@@ -15,16 +15,15 @@ export function hasPalindromePermutation(str) {
   If string is of even length, every character should be paired, storage should be empty
   If string is of odd length there should be only one unique character
   */
-  const storage = new Set();
+  const set = new Set();
 
   for (let i = 0; i < str.length; i++) {
-    let currentLetter = str[i];
-
-    if (storage.has(currentLetter)) {
-      storage.delete(currentLetter);
+    if (set.has(str[i])) {
+      set.delete(str[i]);
     } else {
-      storage.add(currentLetter);
+      set.add(str[i]);
     }
   }
-  return (storage.size === 1 || storage.size === 0) ? true : false;
+
+  return set.size === 1 || set.size === 0 ? true : false;
 };

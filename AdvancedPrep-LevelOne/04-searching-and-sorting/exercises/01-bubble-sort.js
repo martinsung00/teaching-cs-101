@@ -25,3 +25,4 @@ export function bubbleSort(list) {
 };
 
 // Runtime: O(n^2)
+// Space: O(1)
