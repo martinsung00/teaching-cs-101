@@ -25,17 +25,23 @@ class Queue {
 
   dequeue() {
     if (this.head === null) return null;
-    const datum = this.head.data;
+    const datum = this.head;
+
     this.head = this.head.next;
-    this.storage -= 1;
+    this.storage--;
     return datum;
   }
 
   enqueue(data) {
     const newNode = new Node(data);
-    this.tail === null ? this.head = newNode : this.tail.next = newNode;
+
+    if (this.head === null && this.tail === null) {
+      this.head = newNode;
+    } else {
+      this.tail.next = newNode;
+    }
     this.tail = newNode;
-    this.storage += 1;
+    this.storage++;
   }
 
   peek() {

@@ -26,23 +26,25 @@ class Stack {
     const newNode = new Node(data);
     newNode.next = this.head;
     this.head = newNode;
-    this.storage += 1;
+    this.storage++;
   }
 
   pop() {
-    if (this.head === null) return null;
     const datum = this.head.data;
+
+    if (this.head === null) return null;
     this.head = this.head.next;
-    this.storage -= 1;
+    this.storage--;
     return datum;
   }
 
   peek() {
-    return this.head.data;
+    if (this.head === null) return null;
+    return this.head.data
   }
 
   isEmpty() {
-    return this.storage === 0 ? true : false;
+    return this.storage === 0 ? true : false
   }
 
   size() {
