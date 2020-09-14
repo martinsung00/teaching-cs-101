@@ -14,36 +14,36 @@
 export function isPalindrome(head) {
   // Move pointer two to the end of the linked list.
   // Move pointer one with pointer two so that it ends halfway when pointer one reaches the end of the linked list.
-  let pointerOne = head;
-  let pointerTwo = head;
+  const p1 = head;
+  const p2 = head;
 
-  while(pointer !== null && pointer.next !== null) {
-    pointerOne = pointerOne.next;
-    pointerTwo = pointerTwo.next.next;
+  while (p2 !== null && p2.next !== null) {
+    p1 = p1.next;
+    p2 = p2.next.next;
   }
 
-  // Reset pointer one back to head.
-  pointerTwo = head;
-  pointerOne = reverse(pointerOne);
+  p1 = reverse(p1);
+  p2 = head;
 
-  while (pointerOne !== null) {
-    if (pointerOne.val !== pointerTwo.val) {
+  while (p1 !== null) {
+    if (p1.data !== p2.data) {
       return false;
     }
-    pointerOne = pointerOne.next;
-    pointerTwo = pointerTwo.next;
+    p1 = p1.next;
+    p2 = p2.next;
   }
+
   return true;
 };
 
 const reverse = function(head) {
-  let prevNode = null;
+  const prev = null;
 
-  while(head !== null) {
-    let nextNode = head.next;
-    head.next = prevNode;
-    prevNode = head;
-    head = nextNode;
+  while (head !== null) {
+    const next = head.next;
+
+    head.next = prev;
+    prev = head;
+    head = next;
   }
-  return prevNode;
 };

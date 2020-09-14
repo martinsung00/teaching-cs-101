@@ -16,23 +16,21 @@
 */
 export function findLoop(head) {
   // Traverse linked list, compare current node to next node until node matches.
-  let startNode = head;
-  let currentNode = head;
-  let nextNode = head.next;
+  let p1 = head;
+  let p2 = head.next;
 
-  if (currentNode === nextNode) {
-    return nextNode;
-  }
-  while(nextNode !== null) {
-    currentNode = currentNode.next;
-    nextNode = nextNode.next.next;
+  while (p2.next !== null) {
+    if (p2 === p1) {
+      let p3 = head;
 
-    if (currentNode === nextNode) {
-      while(startNode !== currentNode) {
-        startNode = startNode.next;
-        currentNode = currentNode.next;
+      while (p3 !== p1) {
+        p1 = p1.next;
+        p3 = p3.next;
       }
-      return startNode;
+
+      return p3;
     }
   }
+
+  return null;
 };
