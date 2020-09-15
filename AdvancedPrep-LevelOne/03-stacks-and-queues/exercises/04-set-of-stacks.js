@@ -18,40 +18,36 @@ class SetOfStacks {
   }
 
   push(data) {
-    const limit = this.threshold;
     const stacks = this.stacks;
+    const threshold = this.threshold;
 
-    if (!stacks[stacks.length - 1] || stacks[stacks.length - 1].size() >= limit) {
-      const newStack = new Stack;
+    if (stacks[length - 1] < threshold) {
+      stacks[length - 1].push(data);
+    } else {
+      const newStack = new Stack();
 
       newStack.push(data);
       stacks.push(newStack);
-    } else {
-      stacks[stacks.length - 1].push(data);
     }
-    this.storage += 1;
+    this.storage++;
   }
 
   pop() {
+    if (this.storage === 0) return null;
+
     const stacks = this.stacks;
 
-    if (this.isEmpty) return null;
-    let datum = stacks[stacks.length - 1].pop();
-    return datum;
+    this.storage--;
+    return stacks[stacks.length - 1].pop();
   }
 
   popAt(index) {
-    const stacks = this.stacks;
-    let datum;
+    if (this.storage === 0) return null;
 
-    if (this.isEmpty() || !stacks[index]) {
-      return null;
-    } else {
-      datum = stacks[index].peek();
-    }
-    stacks[index].pop();
-    this.storage -= 1;
-    return datum;
+    const stacks = this.stacks;
+
+    this.storage--;
+    return !stacks[index] ? null : stacks[index].pop();
   }
 
   size() {
@@ -63,8 +59,9 @@ class SetOfStacks {
   }
 
   peek() {
-    const stacks = this.stacks
-    return this.isEmpty() ? null : stacks[stacks.length - 1].peek();
+    if (this.storage === 0) return null;
+
+    return this.stacks[this.stacks.length].peek();
   }
 };
 

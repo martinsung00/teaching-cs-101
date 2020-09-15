@@ -24,24 +24,25 @@ class AnimalShelter {
   }
 
   dequeueAny() {
-    const firstCat = this.cats.peek();
-    const firstDog = this.dogs.peek();
-
-    if (firstCat.arrivalTime < firstDog.arrivalTime) {
-      return this.cats.dequeue();
-    } else if (firstDog.arrivalTime < firstCat.arrivalTime) {
-      return this.dogs.dequeue();
+    if (!this.cats.arrval || !this.dogs.arrival) {
+      return this.cats.size > this.dogs.size ? this.dequeueCat() : this.dequeueDog();
     } else {
-      return this.cats.size() > this.dogs.size() ? this.cats.dequeue() : this.dogs.dequeue();
+      return this.cats.arrival > this.dogs.arrival ? this.dequeueCat() : this.dequeueDog();
     }
   }
 
   dequeueDog() {
-    return this.dogs.dequeue();
+    const dog = this.dogs.peek();
+    this.dogs.dequeue();
+
+    return dog;
   }
 
   dequeueCat() {
-    return this.cats.dequeue();
+    const cat = this.cats.peek();
+    this.cats.dequeue();
+
+    return cat;
   }
 };
 
