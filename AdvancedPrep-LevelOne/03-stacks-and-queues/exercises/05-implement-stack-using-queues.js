@@ -14,7 +14,7 @@ export default class Stack {
   }
 
   push(data) {
-    const rotations = this.queue.size();
+    let rotations = this.size;
 
     this.queue.enqueue(data);
     while (rotations > 0) {
@@ -25,15 +25,17 @@ export default class Stack {
   }
 
   pop() {
+    if (this.size === 0) return null;
+
     this.size--;
-    return this.queue.isEmpty ? null : this.queue.dequeue();
+    return this.queue.dequeue();
   }
 
   peek() {
-    return this.queue.isEmpty ? null : this.queue.peek();
+    return this.queue.peek();
   }
 
   isEmpty() {
-    return this.size === 0 ? true : false;
+    return this.storage === 0 ? true : false;
   }
 }
