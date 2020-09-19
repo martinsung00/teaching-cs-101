@@ -5,13 +5,12 @@
 */
 
 export function selectionSort(list) {
-
   for (let i = 0; i < list.length; i++) {
     let smallest = i;
     let temp = list[i];
 
     for (let j = i; j < list.length; j++) {
-      if (list[j] < list[smallest]) {
+      if (list[smallest] > list[j]) {
         smallest = j;
       }
     }

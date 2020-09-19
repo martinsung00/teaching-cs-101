@@ -10,14 +10,14 @@ export function bubbleSort(list) {
   while (sorted === false) {
     sorted = true;
 
-    for(let i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
       let current = list[i];
       let next = list[i + 1];
 
       if (next > current) {
-        sorted = false;
         list[i] = next;
         list[i + 1] = current;
+        sorted = false;
       }
     }
   }
